@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "./App.scss";
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
+import { increment } from "./features/music/musicSlice";
+import {
+  Home,
+  Playlist,
+  Favourite,
+  Sidebar,
+  Detail,
+  SearchResult,
+  Err404,
+} from "./components";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/details/:id" element={<Detail />} />
+          <Route path="/searchResults" element={<SearchResult />} />
+
+          <Route path="/playlist" element={<Playlist />} />
+          <Route path="/favourite" element={<Favourite />} />
+          <Route path="*" element={<Err404 />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

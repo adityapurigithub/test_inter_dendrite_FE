@@ -1,0 +1,23 @@
+.banner {
+  position: relative;
+}
+.banner-bg {
+  background-image: url("https://w0.peakpx.com/wallpaper/411/68/HD-wallpaper-music-texture-grunge-music-background-music-concepts-background-with-notes-musical-notes.jpg");
+  background-size: cover;
+  background-attachment: scroll;
+  background-position: center;
+  width: 100%;
+  height: 25vh;
+}
+.banner-fade {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 7rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.6),
+    #111
+  );
+}
