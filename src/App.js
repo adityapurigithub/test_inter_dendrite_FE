@@ -11,7 +11,7 @@ import { increment } from "./features/music/musicSlice";
 import {
   Home,
   Playlist,
-  Favourite,
+  List,
   Sidebar,
   Detail,
   SearchResult,
@@ -27,9 +27,9 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/details/:id" element={<Detail />} />
           <Route path="/searchResults" element={<SearchResult />} />
-
-          <Route path="/playlist" element={<Playlist />} />
-          <Route path="/favourite" element={<Favourite />} />
+          {["playlist", "favourite"].map((path) => (
+            <Route path={path} element={<List />} />
+          ))}
           <Route path="*" element={<Err404 />} />
         </Routes>
       </Router>

@@ -15,11 +15,15 @@ const SearchResult = () => {
   useEffect(() => {
     dispatch(asyncSearchMusic(query));
   }, [dispatch, query]);
+
+  if (Object.keys(searchRes).length === 0) {
+    return "Loading...";
+  }
   return (
     <div className="search-result">
       <Banner />
       <div className="result-wrapper">
-        <Card searchRes={searchRes} />
+        <Card searchRes={searchRes} query={query} />
       </div>
     </div>
   );

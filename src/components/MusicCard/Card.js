@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./card.scss";
-const Card = ({ hits, trending, latest, retro, searchRes }) => {
+const Card = ({ hits, trending, latest, retro, searchRes, query }) => {
   return (
     <div className="card-wrapper">
       {searchRes ? (
         <div className="section">
           <div className="list">
-            <h3>All Time Hits</h3>
+            <h3>Showing Search Results for : {query}</h3>
             <div className="card">
               {searchRes.tracks.hits.map(({ track }) => (
                 <div className="card-content">

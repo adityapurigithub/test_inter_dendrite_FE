@@ -10,6 +10,10 @@ const initialState = {
     details: {},
     searchRes: {},
   },
+  musicList: {
+    favourite: [],
+    playlist: [],
+  },
 };
 
 // createAsyncThunk("slice_name/function_name",()=>{})
@@ -75,6 +79,20 @@ export const musicSlice = createSlice({
     // increment: (state, action) => {
     //   state.value = action.payload;
     // },
+    addMusicToFavourite: (state, action) => {
+      state.musicList.favourite.push(action.payload);
+    },
+    addMusicToPlaylist: (state, action) => {
+      state.musicList.playlist.push(action.payload);
+    },
+
+    removeFromFavourite: (state, action) => {
+      state.musicList.favourite.splice(action.payload, 1);
+    },
+
+    removeFromPlayList: (state, action) => {
+      state.musicList.playlist.splice(action.payload, 1);
+    },
   },
   extraReducers: {
     [asyncfetchHitMusic.fulfilled]: (state, action) => {
@@ -107,5 +125,10 @@ export const musicSlice = createSlice({
   },
 });
 
-export const { increment } = musicSlice.actions;
+export const {
+  addMusicToFavourite,
+  addMusicToPlaylist,
+  removeFromFavourite,
+  removeFromPlayList,
+} = musicSlice.actions;
 export default musicSlice.reducer;

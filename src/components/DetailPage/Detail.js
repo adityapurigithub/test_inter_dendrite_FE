@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { asyncFetchSongDetails } from "../../features/music/musicSlice";
+import {
+  asyncFetchSongDetails,
+  addMusicToPlaylist,
+  addMusicToFavourite,
+} from "../../features/music/musicSlice";
 import "./details.scss";
 
 const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const musicState = useSelector((state) => state.music);
+
   const { details } = musicState;
   useEffect(() => {
     dispatch(asyncFetchSongDetails(id));
@@ -15,13 +20,22 @@ const Detail = () => {
   }, [dispatch, id]);
 
   console.log(details);
+  const handleAddToList = (e) => {
+    if (e.target.id === "playlist") {
+      dispatch(addMusicToPlaylist(details));
+      // console.log(musicListState);
+    } else {
+      dispatch(addMusicToFavourite(details));
+    }
+  };
 
   if (Object.keys(details).length === 0) {
     return "Loading";
   }
   return (
     <div className="details-wrapper">
-      <div className="details">
+      <div className="details-bg" />
+      <div className="song-details">
         <img className="img" src={`${details.images.background}`} />
         <div className="info">
           <div className="text">
@@ -36,11 +50,16 @@ const Detail = () => {
             </div>
           </div>
           <div className="btn">
-            <button>Add to playlist</button>
-            <button>Add to Favourite</button>
+            <button id="playlist" onClick={handleAddToList}>
+              Add to playlist
+            </button>
+            <button id="favourite" onClick={handleAddToList}>
+              Add to Favourite
+            </button>
           </div>
         </div>
       </div>
+      <div className="artist-details"></div>
     </div>
   );
 };

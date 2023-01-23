@@ -1,0 +1,97 @@
+.list-wrapper {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.list-card {
+  position: relative;
+  width: 100%;
+}
+.list-bg {
+  background: url("https://media.gettyimages.com/id/1297019298/video/isolated-valentines-day-background-heart-icons-moving-animation-flat-style-love-symbol-the.jpg?s=640x640&k=20&c=BCOBKBpP7RYKKUwIC6qoYOEcmFg-FTHKyboRiFWo1s4=");
+  width: 100%;
+  height: 76vh;
+  filter: brightness(90%);
+  background-size: cover;
+}
+.list-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 75vh;
+  overflow-y: scroll;
+}
+.list-details h2 {
+  font-style: oblique;
+  text-align: center;
+  color: blueviolet;
+}
+.list-card {
+  display: grid;
+  place-items: center;
+}
+.fav {
+  width: 50%;
+  margin: 10px;
+  display: flex;
+  gap: 5px;
+}
+.fav-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.fav-info .text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.fav-info .text span {
+  font-size: 1rem;
+  color: darkcyan;
+  font-weight: 600;
+}
+.fav img {
+  height: 200px;
+  object-fit: contain;
+  border-radius: 50%;
+  padding: 1px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.fav-btn button {
+  padding: 8px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  font-size: 1rem;
+  background-color: rgb(227, 45, 45);
+  cursor: pointer;
+  color: aliceblue;
+  font-weight: 400;
+}
+.fav-btn button:active {
+  transform: scale(0.97);
+}
+@media screen and(max-width:900px) {
+  .list-card {
+    place-items: start;
+  }
+  .fav {
+    width: auto;
+  }
+  .fav-info .text {
+    font-size: 1rem;
+  }
+  .fav-btn button {
+    padding: 5px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    font-size: 0.9rem;
+  }
+  .fav img {
+    height: 150px;
+  }
+}
