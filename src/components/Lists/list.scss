@@ -24,6 +24,7 @@
   overflow-y: scroll;
 }
 .list-details h2 {
+  width: 100%;
   font-style: oblique;
   text-align: center;
   color: blueviolet;
@@ -31,6 +32,16 @@
 .list-card {
   display: grid;
   place-items: center;
+}
+.list-card a {
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: 700;
+  background: linear-gradient(135deg, #a84141, #847f45, #981689);
+  letter-spacing: 1px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate 1.5s linear infinite;
 }
 .fav {
   width: 50%;
@@ -93,5 +104,10 @@
   }
   .fav img {
     height: 150px;
+  }
+}
+@keyframes animate {
+  100% {
+    filter: hue-rotate(360deg);
   }
 }

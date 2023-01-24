@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Banner } from "../";
 import {
   removeFromFavourite,
@@ -10,12 +10,11 @@ import "./list.scss";
 
 const List = () => {
   const musicListState = useSelector((state) => state.musicList);
-  const { favourite, playlist } = musicListState;
-  console.log(favourite);
+  let { favourite, playlist } = musicListState;
+
   const location = useLocation();
 
   const path = location.pathname;
-  console.log(path);
 
   const dispatch = useDispatch();
   const handleRemoveFromList = (e) => {
@@ -87,7 +86,10 @@ const List = () => {
               <div className="list-card">
                 <div className="list-card">
                   {playlist.length === 0 && (
-                    <h2>Nothing to Show In your Playlist...</h2>
+                    <>
+                      <h2>Nothing to Show In your Playlist...</h2>
+                      <Link to="/home">Add some Music in your list</Link>
+                    </>
                   )}
 
                   {playlist.map((playlist, id) => (

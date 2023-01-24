@@ -13,7 +13,11 @@ const Detail = () => {
   const dispatch = useDispatch();
   const musicState = useSelector((state) => state.music);
 
+  const musicListState = useSelector((state) => state.musicList);
+
   const { details } = musicState;
+  const { favourite, playlist } = musicListState;
+
   useEffect(() => {
     dispatch(asyncFetchSongDetails(id));
     // dispatch(asyncFetchSongDetails(id)); fetch related...
@@ -32,6 +36,9 @@ const Detail = () => {
   if (Object.keys(details).length === 0) {
     return "Loading";
   }
+  const alreadyInPlaylist = playlist.find((i) => i.key === id);
+  const alreadyInFav = favourite.find((i) => i.key === id);
+
   return (
     <div className="details-wrapper">
       <div className="details-bg" />
@@ -50,11 +57,32 @@ const Detail = () => {
             </div>
           </div>
           <div className="btn">
-            <button id="playlist" onClick={handleAddToList}>
+            <button
+              id="playlist"
+              onClick={handleAddToList}
+              disabled={alreadyInPlaylist}
+            >
+              {alreadyInPlaylist
+                ? `
+              In Playlist
+              `
+                : `
               Add to playlist
+              `}
             </button>
-            <button id="favourite" onClick={handleAddToList}>
-              Add to Favourite
+
+            <button
+              id="favourite"
+              onClick={handleAddToList}
+              disabled={alreadyInFav}
+            >
+              {alreadyInFav
+                ? `
+              Your Favourite
+              `
+                : `
+             Add to Favourites
+              `}
             </button>
           </div>
         </div>

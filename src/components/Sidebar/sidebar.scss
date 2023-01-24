@@ -45,7 +45,7 @@
   margin: 0;
 }
 .search-show {
-  top: 100px;
+  top: 60px;
 }
 .search-hide {
   top: -300px;
@@ -55,6 +55,7 @@
   width: 230px;
   font-size: 1.1rem;
   font-weight: 600;
+  transition: all 0.4s ease-in-out;
 }
 .btn div {
   text-align: center;
@@ -70,4 +71,32 @@
 .btn a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.7);
+}
+
+.suggestion {
+  max-height: 280px;
+  overflow-y: scroll;
+  position: absolute;
+  width: 100%;
+  top: 105%;
+  color: whitesmoke;
+  border-radius: 20px;
+  box-shadow: 1px 1px 4px 1px rgba(255, 255, 255, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.suggestion::-webkit-scrollbar {
+  width: 0;
+}
+.sugg-term {
+  border-bottom: 1px solid greenyellow;
+  padding: 5px;
+}
+.sugg-term:hover {
+  background-color: rgba(0, 0, 255, 0.5);
+}
+.sugg-term:last-child {
+  border: none;
+}
+.btn-lower {
+  transform: translateY(163px);
 }

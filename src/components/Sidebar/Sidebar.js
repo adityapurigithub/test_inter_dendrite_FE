@@ -1,21 +1,44 @@
 import React, { useState } from "react";
 import "./sidebar.scss";
 import { Link, useNavigate } from "react-router-dom";
+import { options } from "../../apis/musicAPI";
 const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [query, setQuery] = useState("");
+  const [suggestions, setSuggestion] = useState([]);
 
   const navigate = useNavigate();
 
   const openSearch = () => {
     setQuery("");
     setShowSearch(!showSearch);
+    setSuggestion([]);
+  };
+
+  const handleChange = async (e) => {
+    setQuery(e.target.value);
+
+    if (e.target.value === "") {
+      setSuggestion([]);
+    }
+
+    const res = await fetch(
+      `https://shazam.p.rapidapi.com/auto-complete?term=${e.target.value}`,
+      options
+    );
+    const data = await res.json();
+    setSuggestion(data.hints);
+    console.log(suggestions);
   };
   const handleSearch = (e) => {
     e.preventDefault();
 
     navigate(`/searchResults?q=${query}`);
     setQuery("");
+  };
+  const handleSuggClick = (term) => {
+    setQuery(term);
+    setSuggestion([]);
   };
   return (
     <div className="sidebar">
@@ -28,8 +51,25 @@ const Navbar = () => {
           <input
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={handleChange}
+            // onBlur={() =>
+            //   setTimeout(() => {
+            //     setSuggestion([]);
+            //   }, 300)
+            // }
           />
+          {suggestions.length !== 0 && (
+            <div className="suggestion">
+              {suggestions.map((sugg) => (
+                <div
+                  className="sugg-term"
+                  onClick={() => handleSuggClick(sugg.term)}
+                >
+                  {sugg.term}
+                </div>
+              ))}
+            </div>
+          )}
           <button
             type="submit"
             style={{
@@ -47,7 +87,7 @@ const Navbar = () => {
           <h3>X</h3>
         </span>
       </div>
-      <div className="btn">
+      <div className={`btn ${suggestions.length !== 0 && "btn-lower"}`}>
         <Link to="/home">
           <div>Home</div>
         </Link>

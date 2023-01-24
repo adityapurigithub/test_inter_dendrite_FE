@@ -1,5 +1,4 @@
 export { default as Home } from "./Home/Home";
-export { default as Playlist } from "./Playlist";
 export { default as Detail } from "./DetailPage/Detail";
 
 export { default as Sidebar } from "./Sidebar/Sidebar";
