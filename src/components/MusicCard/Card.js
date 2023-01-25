@@ -59,16 +59,18 @@ const Card = ({ hits, trending, latest, retro, searchRes, query }) => {
               <div className="card">
                 {latest.tracks.hits.map(({ track }) => (
                   <div className="card-content">
-                    <img
-                      className="card-poster"
-                      src={track.images.background}
-                      alt="track-bg"
-                    />
-                    <div className="card-details">
-                      <div>{track.share.subject}</div>
-                      <div>{track.hub.displayname}</div>
-                      {track.hub.explicit && <div>Explicit</div>}
-                    </div>
+                    <Link to={`/details/${track.key}`}>
+                      <img
+                        className="card-poster"
+                        src={track.images.background}
+                        alt="track-bg"
+                      />
+                      <div className="card-details">
+                        <div>{track.share.subject}</div>
+                        <div>{track.hub.displayname}</div>
+                        {track.hub.explicit && <div>Explicit</div>}
+                      </div>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -80,16 +82,18 @@ const Card = ({ hits, trending, latest, retro, searchRes, query }) => {
               <div className="card">
                 {trending.tracks.hits.map(({ track }) => (
                   <div className="card-content">
-                    <img
-                      className="card-poster"
-                      src={track.images.background}
-                      alt="track-bg"
-                    />
-                    <div className="card-details">
-                      <div>{track.share.subject}</div>
-                      <div>{track.hub.displayname}</div>
-                      {track.hub.explicit && <div>Explicit</div>}
-                    </div>
+                    <Link to={`/details/${track.key}`}>
+                      <img
+                        className="card-poster"
+                        src={track.images.background}
+                        alt="track-bg"
+                      />
+                      <div className="card-details">
+                        <div>{track.share.subject}</div>
+                        <div>{track.hub.displayname}</div>
+                        {track.hub.explicit && <div>Explicit</div>}
+                      </div>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -101,16 +105,18 @@ const Card = ({ hits, trending, latest, retro, searchRes, query }) => {
               <div className="card">
                 {retro.tracks.hits.map(({ track }) => (
                   <div className="card-content">
-                    <img
-                      className="card-poster"
-                      src={track.images.background}
-                      alt="track-bg"
-                    />
-                    <div className="card-details">
-                      <div>{track.share.subject}</div>
-                      <div>{track.hub.displayname}</div>
-                      {track.hub.explicit && <div>Explicit</div>}
-                    </div>
+                    <Link to={`/details/${track.key}`}>
+                      <img
+                        className="card-poster"
+                        src={track.images.background}
+                        alt="track-bg"
+                      />
+                      <div className="card-details">
+                        <div>{track.share.subject}</div>
+                        <div>{track.hub.displayname}</div>
+                        {track.hub.explicit && <div>Explicit</div>}
+                      </div>
+                    </Link>
                   </div>
                 ))}
               </div>

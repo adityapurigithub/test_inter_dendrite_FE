@@ -61,3 +61,8 @@
   background-color: rgb(115, 115, 244);
   color: white;
 }
+@media screen and (max-width: 768px) {
+  .song-details {
+    left: 0;
+  }
+}

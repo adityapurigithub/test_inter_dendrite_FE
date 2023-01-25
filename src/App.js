@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import "./App.scss";
 import {
   BrowserRouter as Router,
@@ -7,10 +5,8 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { increment } from "./features/music/musicSlice";
 import {
   Home,
-  Playlist,
   List,
   Sidebar,
   Detail,

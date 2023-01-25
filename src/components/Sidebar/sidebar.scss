@@ -100,3 +100,15 @@
 .btn-lower {
   transform: translateY(163px);
 }
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 180px;
+  }
+  .search input {
+    width: 120px;
+  }
+  .form button {
+    margin: 0;
+    padding: 2px;
+  }
+}
